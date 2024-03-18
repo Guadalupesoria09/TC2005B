@@ -1,0 +1,12 @@
+/* Selector de etiqueta */
+body {
+    color: blue;
+}
+ /* Selector de clase */
+.red {
+    color: red;
+}
+ /* Selector de id */
+#diamantes {
+    color:cyan;
+}
