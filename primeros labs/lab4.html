@@ -8,9 +8,23 @@
     <title>Función contador</title>
     <title>Función promedio</title>
     <title>Función Inverso</title>
+    <title>Función Calcular area</title>
+
 
 </head>
 <body>
+    <h1>Función Inverso</h1>
+    <p>Ingrese un número para obtener su inverso:</p>
+    <input type="number" id="numeroInput">
+    <button onclick="obtenerInverso()">Obtener Inverso</button>
+    <p id="resultado"></p>
+
+    <h2>Área de un Rectángulo</h2>
+    <p>Ingresa la base y la altura del rectángulo:</p>
+    <input type="number" id="base" placeholder="Base">
+    <input type="number" id="altura" placeholder="Altura">
+    <button onclick="calcularArea()">Calcular Área</button>
+    <p id="resultado"></p>
     <script>
         /*Tabla de cuadrados y cubos
 
@@ -113,7 +127,7 @@ function promedios (matriz){
 
         console.log(promedios(matriz));*/
 
-/* Inverso*/ 
+/* Inverso
 function inverso(numero) {
             let numeroInvertido = numero.toString().split('').reverse().join('');
             return parseInt(numeroInvertido);
@@ -123,7 +137,16 @@ function inverso(numero) {
             const numero = parseInt(document.getElementById('numeroInput').value);
             const resultado = inverso(numero);
             document.getElementById('resultado').textContent = `El inverso de ${numero} es: ${resultado}`;
+        }*/
+
+/* Area Rectangulo*/
+function calcularArea() {
+            const base = parseFloat(document.getElementById('base').value);
+            const altura = parseFloat(document.getElementById('altura').value);
+            const area = base * altura;
+            document.getElementById('resultado').textContent = `El área del rectángulo es: ${area}`;
         }
+
     </script>
 </body>
 </html>
