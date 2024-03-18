@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generar Tabla</title>
+    <title>Función Generar Numeros Aleatorios</title>
+    <title>Función contador</title>
+    <title>Función promedio</title>
+    <title>Función Inverso</title>
+
 </head>
 <body>
     <script>
@@ -82,7 +87,7 @@ function contador(arreglo) {
         console.log(contador([4, -8, 0, 1, 0, -2])); 
         console.log(contador([-1, 0, 0, -7, 9, 0]));*/
 
-/* Promedios*/
+/* Promedios
 function promedios (matriz){
             var promedios = [];
         
@@ -106,8 +111,19 @@ function promedios (matriz){
             [7, 8, 9]
         ];
 
-        console.log(promedios(matriz));
-        
+        console.log(promedios(matriz));*/
+
+/* Inverso*/ 
+function inverso(numero) {
+            let numeroInvertido = numero.toString().split('').reverse().join('');
+            return parseInt(numeroInvertido);
+        }
+
+        function obtenerInverso() {
+            const numero = parseInt(document.getElementById('numeroInput').value);
+            const resultado = inverso(numero);
+            document.getElementById('resultado').textContent = `El inverso de ${numero} es: ${resultado}`;
+        }
     </script>
 </body>
 </html>
