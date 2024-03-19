@@ -9,6 +9,8 @@ exports.post_construir = (request, response, next) => {
     const construccion = 
     new Construccion(request.body.nombre, request.body.imagen);
     construccion.save();
+    response.setHeader('Set-Cookie', 'ultima_construccion=' + request.body.nombre);
+
     response.redirect('/');
 };
 exports.get_root = (request, response, next) => {
