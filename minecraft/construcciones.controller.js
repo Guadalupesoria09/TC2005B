@@ -1,10 +1,3 @@
-const construcciones = [
-    {
-        nombre: "casa", 
-        imagen: "https://i.blogs.es/7cfcd0/casas-en-minecraft/1366_2000.jpeg",
-    }
-];
-
 exports.get_construir = (request, response, next) => {
     response.render('construir'); 
 };
