@@ -21,7 +21,7 @@ app.use('/', rutasConstrucciones);
 app.use((request, response, next) => {
   response.status(404);
   response.sendFile(
-    path.join(__dirname, 'views', '404.html')
+     path.join(__dirname, 'views', '404.html')
   );
 });
 
