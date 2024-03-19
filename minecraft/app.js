@@ -38,7 +38,7 @@ const header = `
             <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
                   <a class="navbar-item" href="/">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT27Ahugh_giimXgC5jzZNAIdsZGxqjA-bvxw-4gRbBfF8evxX2rYwG4eI_fRiurOTiZ_c&usqp=CAU" width="112" height="28">
+                    <img src="https://wallpaperaccess.com/full/1762641.jpg" width="112" height="28">
                   </a>
               
                   <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -271,22 +271,41 @@ const server = http.createServer( (request, response) => {
       response.write(footer);
       response.end();
 
-    } else if (request.url == "/construir") {
+    } else if (request.url == "/construir" && request.method == "GET") {
 
       response.write(header);
       response.write(`
         <h1 class="title">Agregar una construcción</h1>
-          <form action="construir" method="POST">
-            <label class="label" for="nombre">Nombre</label>
-            <input id="nombre" type="text" class="input"><br>
-            <label class="label" for="imagen">Imagen</label>
-            <input id="imagen" type="text" class="input"><br><br>
-            <input class="button is-success" type="submit" value="Construir">
+        <form action="/construir" method="POST">
+        <label class="label" for="nombre">Nombre</label>
+        <input name="nombre" id="nombre" type="text" class="input"><br>
+        <label class="label" for="imagen">Imagen</label>
+        <input name="imagen" id="imagen" type="text" class="input"><br><br>
+        <input class="button is-success" type="submit" value="Construir">
           </form>
       `);
       response.write(footer);
       response.end();
 
+      
+    } else if (request.url == "/construir" && request.method == "POST") {
+        const datos = [];
+        request.on('data', (dato) => {
+            console.log(dato);
+            datos.push(dato);
+        });
+
+        return request.on('end', () => {
+            const datos_completos = Buffer.concat(datos).toString();
+            console.log(datos_completos);
+            const nombre = datos_completos.split('&')[0].split('=')[1];
+            console.log(nombre);
+            const imagen = datos_completos.split('&')[1].split('=')[1];
+            console.log(imagen);
+            return response.end();
+        });
+
+        
     } else {
 
       //Código de respuesta para recurso no encontrado
@@ -294,7 +313,7 @@ const server = http.createServer( (request, response) => {
 
       response.setHeader('Content-Type', 'text/html');
       response.write(header);
-      response.write(`<title>Ups, esta aldea no existe</title>`);
+      response.write(`<h1 class="title">Ups, esta aldea no existe</h1>`);
       response.write(footer);
       
       response.end();
