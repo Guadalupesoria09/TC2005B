@@ -5,6 +5,13 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 
 
+const construcciones = [
+    {
+      nombre: "casa", 
+      imagen: "https://i.blogs.es/7cfcd0/casas-en-minecraft/1366_2000.jpeg",
+    }
+  ];  
+
 //Middleware
 app.use((request, response, next) => {
     console.log('Middleware!');
@@ -110,13 +117,13 @@ app.use((request, response, next) => {
 
   app.post('/construir', (request, response, next) => {
     console.log(request.body);
-
+    construcciones.push(request.body);
     response.redirect('/');
 });
 
 app.get('/', (request, response, next) => {
     console.log('Ruta /');
-    response.send(`
+    let html_respuesta = `
     <!DOCTYPE html>
     <html>
         <head>
@@ -190,132 +197,39 @@ app.get('/', (request, response, next) => {
                 <div class="container">
                     <h1 class="title">Hola mundo de Minecraft!</h1>
     
-                    <div class="columns">
+                     <div class="columns">`;
+
+  for (let construccion of construcciones) {
+    
+    html_respuesta += `
                         <div class="column">
                             <div class="card">
                                 <div class="card-image">
                                   <figure class="image is-4by3">
-                                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                                    <img src="${construccion.imagen}" alt="Imagen de ${construccion.nombre}">
                                   </figure>
-                                </div>
-                                <div class="card-content">
+                                  <div class="card-content">
                                   <div class="media">
                                     <div class="media-left">
                                       <figure class="image is-48x48">
-                                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                        <img src="${construccion.imagen}" alt="Imagen de ${construccion.nombre}">
                                       </figure>
                                     </div>
                                     <div class="media-content">
-                                      <p class="title is-4">John Smith</p>
-                                      <p class="subtitle is-6">@johnsmith</p>
-                                    </div>
-                                  </div>
-                              
-                                  <div class="content">
+                                      <p class="title is-4">${construccion.nombre}</p>
+                                      <p class="subtitle is-6">@${construccion.nombre}</p>
+                                    </div>  
+                                </div>
+                                <div class="content">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                     Phasellus nec iaculis mauris. <a>@bulmaio</a>.
                                     <a href="#">#css</a> <a href="#">#responsive</a>
                                     <br>
                                     <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                                   </div>
-                                </div>
-                              </div>
-                        </div>
-    
-                        <div class="column">
-                            <div class="card">
-                                <div class="card-image">
-                                  <figure class="image is-4by3">
-                                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                                  </figure>
-                                </div>
-                                <div class="card-content">
-                                  <div class="media">
-                                    <div class="media-left">
-                                      <figure class="image is-48x48">
-                                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                                      </figure>
-                                    </div>
-                                    <div class="media-content">
-                                      <p class="title is-4">John Smith</p>
-                                      <p class="subtitle is-6">@johnsmith</p>
-                                    </div>
-                                  </div>
-                              
-                                  <div class="content">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                                    <a href="#">#css</a> <a href="#">#responsive</a>
-                                    <br>
-                                    <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                                  </div>
-                                </div>
-                              </div>
-                        </div>
-    
-                        <div class="column">
-                            <div class="card">
-                                <div class="card-image">
-                                  <figure class="image is-4by3">
-                                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                                  </figure>
-                                </div>
-                                <div class="card-content">
-                                  <div class="media">
-                                    <div class="media-left">
-                                      <figure class="image is-48x48">
-                                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                                      </figure>
-                                    </div>
-                                    <div class="media-content">
-                                      <p class="title is-4">John Smith</p>
-                                      <p class="subtitle is-6">@johnsmith</p>
-                                    </div>
-                                  </div>
-                              
-                                  <div class="content">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                                    <a href="#">#css</a> <a href="#">#responsive</a>
-                                    <br>
-                                    <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                                  </div>
-                                </div>
-                              </div>
-                        </div>
-    
-                        <div class="column">
-                            <div class="card">
-                                <div class="card-image">
-                                  <figure class="image is-4by3">
-                                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                                  </figure>
-                                </div>
-                                <div class="card-content">
-                                  <div class="media">
-                                    <div class="media-left">
-                                      <figure class="image is-48x48">
-                                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                                      </figure>
-                                    </div>
-                                    <div class="media-content">
-                                      <p class="title is-4">John Smith</p>
-                                      <p class="subtitle is-6">@johnsmith</p>
-                                    </div>
-                                  </div>
-                              
-                                  <div class="content">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                                    <a href="#">#css</a> <a href="#">#responsive</a>
-                                    <br>
-                                    <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                                  </div>
-                                </div>
-                              </div>
-                        </div>
-    
-                      </div>
+                                </div>`;
+  }
+  html_respuesta += `
                 </div>
             </section>
             <footer class="footer">
@@ -329,8 +243,8 @@ app.get('/', (request, response, next) => {
               </footer>
         </body>
     </html>
-    `); //Manda la respuesta
-  });
+    `; 
+    response.send(html_respuesta);  });
 
   app.use((request, response, next) => {
     response.status(404);
