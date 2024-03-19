@@ -38,7 +38,7 @@ const header = `
             <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
                   <a class="navbar-item" href="/">
-                    <img src="https://wallpaperaccess.com/full/1762641.jpg" width="112" height="28">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT27Ahugh_giimXgC5jzZNAIdsZGxqjA-bvxw-4gRbBfF8evxX2rYwG4eI_fRiurOTiZ_c&usqp=CAU" width="112" height="28">
                   </a>
               
                   <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -50,12 +50,12 @@ const header = `
               
                 <div id="navbarBasicExample" class="navbar-menu">
                   <div class="navbar-start">
-                    <a class="navbar-item">
+                    <a class="navbar-item" href="/">
                       Home
                     </a>
               
-                    <a class="navbar-item">
-                      Documentation
+                    <a class="navbar-item" href="/construir">
+                      Construir
                     </a>
               
                     <div class="navbar-item has-dropdown is-hoverable">
@@ -256,6 +256,17 @@ const server = http.createServer( (request, response) => {
 
             </div>
 
+          <table>
+              <tbody>
+                  <tr><td>Manzanas</td><td id="diamantes">Diamantes</td></tr>
+              </tbody>
+              <thead>
+                  <tr><th>Comida</th><th>Minerales</th></tr>
+              </thead>
+              <tfoot class="red">
+                  <tr><td colspan="2">Tabla de objetos de Minecraft</td></tr>
+              </tfoot>
+          </table>
   `);
       response.write(footer);
       response.end();
@@ -290,7 +301,6 @@ const server = http.createServer( (request, response) => {
     }
     
 });
-
 
 server.listen(3000);
 
