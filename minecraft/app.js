@@ -291,21 +291,6 @@ const server = http.createServer( (request, response) => {
     
 });
 
-/*
-const datos = [];
-
-request.on('data', (dato) => {
-    console.log(dato);
-    datos.push(dato);
-});
-
-return request.on('end', () => {
-    const datos_completos = Buffer.concat(datos).toString();
-    console.log(datos_completos);
-    const nuevo_dato = datos_completos.split('=')[1];
-    return response.end();
-});
-*/
 
 server.listen(3000);
 
